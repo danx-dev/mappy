@@ -22,7 +22,9 @@ func TestSimpleMapping(t *testing.T) {
 
 	result := mappy.DoMap(&input, &output)
 	s, _ := json.Marshal(result)
-	fmt.Println(string(s))
+	fmt.Println("Json", string(s))
 
-	fmt.Println(result)
+	fmt.Println("Output", output)
+
+	fmt.Println("Result", result)
 }
