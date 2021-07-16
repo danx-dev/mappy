@@ -6,13 +6,13 @@ import (
 	"reflect"
 )
 
-func DoMap(dest interface{}, source interface{}) interface{} {
+func DoMap(dest interface{}, source interface{}) {
 	log.Println("DoMap Start")
 
 	v := reflect.ValueOf(source)
 	if v.Kind() != reflect.Ptr {
 		log.Fatalln("non-pointer ", v.Type())
-		return nil
+		return
 	}
 	t := reflect.TypeOf(source)
 	s := v.Elem()
@@ -25,7 +25,7 @@ func DoMap(dest interface{}, source interface{}) interface{} {
 		}
 	}
 	log.Println("Input done")
-	return setOutput(dest, mapList)
+	setOutput(dest, mapList)
 
 }
 func setOutput(dest interface{}, mapList map[string]reflect.Value) interface{} {

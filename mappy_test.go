@@ -1,7 +1,6 @@
 package mappy_test
 
 import (
-	"encoding/json"
 	"fmt"
 	"testing"
 
@@ -20,14 +19,10 @@ func TestSimpleMapping(t *testing.T) {
 	input := S1{Value1: "Test"}
 	output := S2{Value1: ""}
 
-	result := mappy.DoMap(&output, &input)
-	s, _ := json.Marshal(result)
-	fmt.Println("Json", string(s))
+	mappy.DoMap(&output, &input)
 
 	fmt.Println("Output", output)
 	if output.Value1 != "Test" {
 		t.Error("Value1 was not mapped!")
 	}
-
-	fmt.Println("Result", result)
 }
